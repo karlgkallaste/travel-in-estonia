@@ -2,6 +2,16 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInEstonia.App", "TravelInEstonia.App\TravelInEstonia.App.csproj", "{DA9391DD-CFBA-4DD0-9ECF-B002C3F52FF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInEstonia.Services", "TravelInEstonia.Services\TravelInEstonia.Services.csproj", "{211245A7-A0DF-4E25-A610-B3E9C8B7E9DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInEstonia.Domain", "TravelInEstonia.Domain\TravelInEstonia.Domain.csproj", "{EA15A8F6-CAC5-4745-B706-D0367DCDD816}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInEstonia.App.Tests", "TravelInEstonia.App.Tests\TravelInEstonia.App.Tests.csproj", "{33F53009-B4BF-43EB-A68C-D93E8CC02E60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInEstonia.Domain.Tests", "TravelInEstonia.Domain.Tests\TravelInEstonia.Domain.Tests.csproj", "{B1A8F7B0-C34B-49D7-842A-F4F6E3F2DA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInEstonia.Services.Tests", "TravelInEstonia.Services.Tests\TravelInEstonia.Services.Tests.csproj", "{36EC0E19-8F3D-4BAA-B3D1-0D61DF608188}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +22,25 @@ Global
 		{DA9391DD-CFBA-4DD0-9ECF-B002C3F52FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA9391DD-CFBA-4DD0-9ECF-B002C3F52FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA9391DD-CFBA-4DD0-9ECF-B002C3F52FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{211245A7-A0DF-4E25-A610-B3E9C8B7E9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211245A7-A0DF-4E25-A610-B3E9C8B7E9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211245A7-A0DF-4E25-A610-B3E9C8B7E9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211245A7-A0DF-4E25-A610-B3E9C8B7E9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA15A8F6-CAC5-4745-B706-D0367DCDD816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA15A8F6-CAC5-4745-B706-D0367DCDD816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA15A8F6-CAC5-4745-B706-D0367DCDD816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA15A8F6-CAC5-4745-B706-D0367DCDD816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F53009-B4BF-43EB-A68C-D93E8CC02E60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F53009-B4BF-43EB-A68C-D93E8CC02E60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F53009-B4BF-43EB-A68C-D93E8CC02E60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F53009-B4BF-43EB-A68C-D93E8CC02E60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A8F7B0-C34B-49D7-842A-F4F6E3F2DA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A8F7B0-C34B-49D7-842A-F4F6E3F2DA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A8F7B0-C34B-49D7-842A-F4F6E3F2DA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A8F7B0-C34B-49D7-842A-F4F6E3F2DA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36EC0E19-8F3D-4BAA-B3D1-0D61DF608188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36EC0E19-8F3D-4BAA-B3D1-0D61DF608188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36EC0E19-8F3D-4BAA-B3D1-0D61DF608188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36EC0E19-8F3D-4BAA-B3D1-0D61DF608188}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

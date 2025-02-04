@@ -1,8 +1,29 @@
+using Marten;
+using Marten.Events.Projections;
+using TravelInEstonia.Domain.Features.Schedules;
+using Weasel.Core;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+builder.Services.AddMarten(options =>
+{
+    // Establish the connection string to your Marten database
+    options.Connection(builder.Configuration.GetConnectionString("DefaultConnection")!);
+    // Specify that we want to use STJ as our serializer
+    options.UseNewtonsoftForSerialization();
+    options.Projections.Snapshot<Schedule>(SnapshotLifecycle.Inline);
+    // If we're running in development mode, let Marten just take care
+    // of all necessary schema building and patching behind the scenes
+    if (builder.Environment.IsDevelopment())
+    {
+        options.AutoCreateSchemaObjects = AutoCreate.All;
+    }
+}).UseLightweightSessions();
 
 var app = builder.Build();
 
