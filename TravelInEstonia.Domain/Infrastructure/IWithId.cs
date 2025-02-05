@@ -2,5 +2,5 @@
 
 public interface IWithId
 {
-    public Guid Id { get; protected set; }
+    public Guid Id { get;  }
 }
