@@ -2,9 +2,9 @@
 
 public sealed class Result
 {
-    private string? Error { get; }
+    public string? Error { get; }
 
-    private bool IsSuccess { get; }
+    public bool IsSuccess { get; }
 
 
     private Result()
