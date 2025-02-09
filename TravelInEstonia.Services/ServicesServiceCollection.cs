@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Hangfire;
+using Microsoft.Extensions.DependencyInjection;
 using TravelInEstonia.Services.Services;
 
 namespace TravelInEstonia.Services;
