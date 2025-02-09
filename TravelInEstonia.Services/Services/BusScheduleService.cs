@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using Hangfire;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -59,7 +60,7 @@ public class BusScheduleService : IBusScheduleService
         {
             return Result.Failure("Failed to create schedule");
         }
-
+        BackgroundJob.Schedule(() => GetLatestSchedule(), modelFromResponse.Expires.ToDateTimeOffset());
         return Result.Success();
     }
 }

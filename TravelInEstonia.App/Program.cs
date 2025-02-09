@@ -1,3 +1,5 @@
+using Hangfire;
+using Hangfire.PostgreSql;
 using Marten;
 using Marten.Events.Projections;
 using TravelInEstonia.App.Features.Schedules.Models;
@@ -35,10 +37,6 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.AddTransient<IScheduleFareProvider, ScheduleFareProvider>();
-builder.Services
-    .RegisterDomainServices()
-    .RegisterServicesServices();
-
 builder.Services.AddMarten(options =>
 {
     // Establish the connection string to your Marten database
@@ -55,6 +53,17 @@ builder.Services.AddMarten(options =>
     }
 }).UseLightweightSessions();
 
+builder.Services.AddHangfire(config => config
+    .UsePostgreSqlStorage(options =>
+        options.UseNpgsqlConnection(builder.Configuration.GetConnectionString("DefaultConnection"))));
+
+builder.Services.AddHangfireServer();
+
+
+builder.Services
+    .RegisterDomainServices()
+    .RegisterServicesServices();
+
 var app = builder.Build();
 app.UseCors("AllowVite");
 // Configure the HTTP request pipeline.
@@ -62,6 +71,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseOpenApi();
     app.UseSwaggerUI();
+}
+app.UseHangfireDashboard();
+using (var scope = app.Services.CreateScope())
+{
+    var busScheduleService = scope.ServiceProvider.GetRequiredService<IBusScheduleService>();
+    BackgroundJob.Enqueue(() => busScheduleService.GetLatestSchedule());
 }
 
 app.UseHttpsRedirection();
