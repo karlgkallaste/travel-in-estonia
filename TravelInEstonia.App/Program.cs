@@ -1,6 +1,8 @@
 using Marten;
 using Marten.Events.Projections;
+using TravelInEstonia.App.Features.Schedules.Models;
 using TravelInEstonia.Domain;
+using TravelInEstonia.Domain.Features.Reservations;
 using TravelInEstonia.Domain.Features.Schedules;
 using TravelInEstonia.Services;
 using TravelInEstonia.Services.Services;
@@ -32,7 +34,7 @@ builder.Services.AddCors(options =>
             .AllowCredentials();
     });
 });
-
+builder.Services.AddTransient<IScheduleFareProvider, ScheduleFareProvider>();
 builder.Services
     .RegisterDomainServices()
     .RegisterServicesServices();
@@ -44,6 +46,7 @@ builder.Services.AddMarten(options =>
     // Specify that we want to use STJ as our serializer
     options.UseNewtonsoftForSerialization();
     options.Projections.Snapshot<Schedule>(SnapshotLifecycle.Inline);
+    options.Projections.Snapshot<Reservation>(SnapshotLifecycle.Inline);
     // If we're running in development mode, let Marten just take care
     // of all necessary schema building and patching behind the scenes
     if (builder.Environment.IsDevelopment())
