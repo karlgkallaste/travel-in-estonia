@@ -13,7 +13,7 @@ public class ScheduleController : ControllerBase
     [HttpGet("locations")]
     [ProducesResponseType(typeof(LocationModel[]), 200)]
     [ProducesResponseType(typeof(Result), 400)]
-    public async Task<IActionResult> Destinations([FromServices] IQuerySession documentSession)
+    public async Task<IActionResult> Locations([FromServices] IQuerySession documentSession)
     {
         var latestSchedule = await documentSession.Query<Schedule>()
             .OrderByDescending(x => x.ValidUntil).FirstOrDefaultAsync();
@@ -30,5 +30,22 @@ public class ScheduleController : ControllerBase
             .ToArray();
 
         return Ok(locations);
+    }
+
+
+    [HttpGet("fares")]
+    [ProducesResponseType(typeof(FareModel[]), 200)]
+    [ProducesResponseType(typeof(Result), 400)]
+    public async Task<IActionResult> Fares([FromServices] IQuerySession documentSession, [FromServices] IScheduleFareProvider fareProvider, [FromQuery] ScheduleFiltersModel filters)
+    {
+        var latestSchedule = await documentSession.Query<Schedule>()
+            .OrderByDescending(x => x.ValidUntil)
+            .FirstOrDefaultAsync();
+        if (latestSchedule == null)
+        {
+            return NotFound(Result.Failure("Schedule not found"));
+        }
+
+        return Ok(fareProvider.Provide(latestSchedule, filters));
     }
 }
