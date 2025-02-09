@@ -51,11 +51,11 @@ export default defineComponent({
             class="w-full max-w-full mb-4 mx-auto bg-white rounded-lg shadow-lg p-6"
         >
           <div class="flex justify-between items-center">
-            <div class="text-xl font-semibold text-indigo-600">{{ fare.company?.name }}</div>
+            <div class="text-xl font-semibold text-indigo-600"></div>
             <Tag icon="pi pi-euro" class="text-emerald-500" severity="success" value="Info">{{ fare.totalPrice }}</Tag>
           </div>
           <div class="text-sm text-gray-500 mt-2">
-            <p v-if="fare.company">{{ fare.totalDistance }} km</p>
+            <p v-if="fare.totalDistance">Total distance: {{ fare.totalDistance }} km</p>
             <p v-if="fare.routes?.length">Transfers: {{ fare.routes.length - 1 }}</p>
           </div>
 
@@ -70,6 +70,7 @@ export default defineComponent({
                 <p v-if="route.arriveBy">Arrival: {{ new Date(route.arriveBy).toLocaleString() }}</p>
                 <p v-if="route.distance">Distance: {{ route.distance }} km</p>
                 <p v-if="route.price">Price: {{ route.price }}€</p>
+                <p v-if="route.company">Company: {{ route.company.name }}€</p>
               </div>
             </div>
             <button
