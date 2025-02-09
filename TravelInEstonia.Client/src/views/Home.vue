@@ -97,7 +97,7 @@ class SearchFiltersModel {
 <template>
 
   <div
-      class="relative font-sans before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10">
+      class="relative font-sans before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10 mt-10">
     <img src="../../public/bus-interior.jpg" alt="Banner Image"
          class="absolute inset-0 w-full h-full object-cover blur-sm"/>
 
